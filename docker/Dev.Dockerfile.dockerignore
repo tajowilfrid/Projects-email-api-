@@ -1,0 +1,9 @@
+supervisord.pid
+/.idea
+/.git
+.env
+.styleci.yml
+.gitlab-ci.yml
+.trivyignore
+docker-compose.yml
+sail

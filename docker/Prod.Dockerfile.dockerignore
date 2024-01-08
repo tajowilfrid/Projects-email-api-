@@ -1,0 +1,15 @@
+supervisord.pid
+/vendor
+/.idea
+.env
+.php-cs-fixer.*
+.phpunit.result.cache
+phpunit.xml
+.styleci.yml
+*.cache
+.editorconfig
+/tests
+.gitlab-ci.yml
+.trivyignore
+docker-compose.yml
+sail

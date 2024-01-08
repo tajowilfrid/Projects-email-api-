@@ -1,0 +1,7 @@
+supervisord.pid
+/vendor
+/.idea
+node_modules
+.php-cs-fixer.cache
+*.cache
+openapi.json

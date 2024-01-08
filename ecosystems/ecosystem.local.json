@@ -1,0 +1,20 @@
+{
+  "apps" : [
+    {
+      "name" : "octane - dev",
+      "script" : "artisan",
+      "args" : [
+        "octane:start",
+        "--workers=1",
+        "--task-workers=1",
+        "--host=0.0.0.0",
+        "--port=80",
+        "--watch"
+      ],
+      "instances" : 1,
+      "autorestart" : true,
+      "max_restarts" : 1,
+      "interpreter" : "php"
+    }
+  ]
+}

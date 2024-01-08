@@ -1,0 +1,6 @@
+#no tag specified (fine for our intermediate images)
+DS001
+#trivy doesnt know that base image does not run as root
+DS002
+#cd in Dockerfile
+DS013

@@ -1,0 +1,22 @@
+###
+
+POST http://localhost:8000/channel2
+Accept: : application/json
+Content-Type: application/json
+
+{
+    "message" : "Hallo Test!",
+    "from" : "xsd@myswooop.de",
+    "to" : "demo@myswooop.de"
+}
+
+###
+
+POST http://localhost:8000/channel2
+Accept: : application/json
+Content-Type: application/json
+
+{
+    "message" : "Hallo Test!",
+    "from" : "xsd@myswooop.de"
+}

@@ -1,0 +1,24 @@
+variables:
+  APP_URL: "https://email-api-service.localhost"
+  APP_DEBUG: "true"
+  APP_ENV: "testing"
+  MAIL_ENCRYPTION: ""
+  MAIL_HOST: "mailhog"
+  MAIL_PORT: 25
+  MYSQL_ROOT_PASSWORD: "geheim"
+  MYSQL_USER: "email-api-service"
+  MYSQL_PASSWORD: "geheim"
+  MYSQL_DATABASE: "audit"
+  AUDIT_DB_HOST: "database"
+  AUDIT_DB_DATABASE: "audit"
+  AUDIT_DB_USERNAME: "email-api-service"
+  AUDIT_DB_PASSWORD: "geheim"
+  PORTAINER_STAGING_HOOK: https://portainer.myswooop.de/api/webhooks/TODO
+  PORTAINER_PROD_HOOK: https://portainer.myswooop.de/api/webhooks/1dd130c2-a2cb-4fa0-ac16-752a37076007
+  APM_ACTIVE: 'false'
+
+include:
+  - project: myswooop/default-ci-pipeline
+    file: pipelines/CI_Service.yml
+  - project: myswooop/default-ci-pipeline
+    file: pipelines/modules/deploy/service.yml

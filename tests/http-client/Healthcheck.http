@@ -1,0 +1,11 @@
+GET {{audit_service_host}}/healthcheck
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Expected status is 200 results '" + response.status + "'");
+        client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+        client.assert(typeof response.body === 'object', "Expect body is object but received '" + (typeof response.body) + "'");
+        client.assert(typeof response.body.connections === 'object', "Expect response has connection results '" + (typeof response.body.connections) + "'");
+        client.assert(typeof response.body.stores === 'object', "Expect response has store results '" + (typeof response.body.stores) + "'");
+    });
+ %}

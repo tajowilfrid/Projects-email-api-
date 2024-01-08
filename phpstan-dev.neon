@@ -1,0 +1,9 @@
+includes:
+	- phpstan-base.neon
+
+parameters:
+	paths:
+		- app
+		- tests
+	excludePaths:
+		- vendor/*

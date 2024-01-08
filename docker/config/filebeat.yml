@@ -1,0 +1,68 @@
+###################### Filebeat Configuration Example #########################
+
+# This file is an example configuration file highlighting only the most common
+# options. The filebeat.reference.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/filebeat/index.html
+
+# For more available modules and options, please see the filebeat.reference.yml sample
+# configuration file.
+
+# ============================== Filebeat inputs ===============================
+
+filebeat.inputs:
+
+  - type: log
+
+    enabled: true
+
+    paths:
+      - /var/www/app/storage/logs/laravel.log
+
+    ### Multiline options
+
+    multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\]'
+
+    multiline.negate: true
+
+    multiline.match: after
+
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+#  index.codec: best_compression
+
+setup.kibana:
+  host: "10.0.100.4:5601"
+
+output.elasticsearch:
+  hosts: [ "167.86.70.201:9200","167.86.114.219:9200","164.68.125.254:9200" ]
+  index: "laravel-email-api-service-%{+yyyy.MM.dd}"
+  pipeline: "laravel"
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_docker_metadata: ~
+  - add_fields:
+      target: laravel
+      fields:
+        version: ${APP_VERSION}
+  - add_fields:
+      target: ''
+      fields:
+        container.id: ${CONTAINER_ID}
+
+setup.template.name: 'laravel-email-api-service'
+setup.template.pattern: 'laravel-email-api-service-*'
+
+setup.ilm.enabled: auto
+setup.ilm.rollover_alias: "laravel-email-api-service"
+setup.ilm.pattern: "{now/d}-000001"
